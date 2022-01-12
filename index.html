@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <style>
+        
+        * {
+  margin:0;
+  padding:0;
+  user-scalable:no;
+  
+}
+
+body {
+    font-family: sans-serif;
+}
+
+img {
+    width:70%;
+    margin-left:15%;
+    margin-top:10%;
+}
+
+.rows, input,select , div {
+    display:block;
+    height:40px;
+    outline:none;
+    border:1px solid lightgrey;
+    border-radius:10px;
+    margin-top:5%;
+    padding-left:10px;
+    margin-left:20%;
+    width:60%;
+    background-color:white;
+}
+
+.button {
+    background-color:lightgrey;
+    color:white;:;
+    padding:0;
+    font-weight:500;
+    
+}
+
+div {
+    background-color:;
+    overflow:hidden;
+    border:0.5px solid green;
+    box-shadow:inset 0px 0px 4px 1px grey;
+}
+
+div img {
+    position:relative;
+    width:10px;
+    top:-50%;
+    left:-17.5%;
+    z-index:4;
+}
+
+div b {
+    position:relative;
+    top:-200%;
+    left:5%;
+    font-weight:500;
+}
+
+.box {
+    position:relative;
+        background-color:green;
+        height:40px;
+        width:25px;
+        top:-175%;
+        left:-30%;
+        border:none;
+        border-radius:0;
+        transform:rotateZ(45deg);
+        z-index:3;
+}
+
+p {
+    
+    font-size:10px;
+    font-weight:500;
+    color:red;
+    margin-top:1%;
+    margin-left:21%;
+    
+}
+
+
+        
+    </style>
+    
+    
+    <script>
+        
+        
+        window.onload = () => {
+    
+var inputs = document.getElementsByTagName("input");
+var continuee = false; 
+var count = 0;
+var dots = "";
+    for(let i=0;i<inputs.length;i++)
+    {
+        inputs[i].onfocus = () => 
+        { 
+        inputs[i].style.border = "1.5px solid blue";
+        }
+        
+        inputs[i].onblur = () => 
+        { 
+        inputs[i].style.border = "1px solid lightgrey";
+        }
+        
+        inputs[i].onkeyup = () => {
+            check();
+        }
+        
+    }
+
+function check() {
+    
+    continuee = true;
+    for(let i=0;i<inputs.length;i++)
+    {
+        if(inputs[i].value == "") 
+        continuee = false;
+        
+        if(inputs[i].type == "number" && inputs[i].value.length != 10)
+        continuee = false;
+    }
+    
+    if(continuee) {
+        document.getElementById("button").style.backgroundColor = "blue";
+    }
+    else {
+        document.getElementById("button").style.backgroundColor = "lightgrey";
+    }
+    
+}
+
+
+
+document.getElementById("button").onclick = () => {
+    
+    if(continuee) {
+        continuee = false;
+         
+         document.getElementById("button").style.transition = "0.1s ease-in-out";
+        
+        
+        let interval = setInterval( () => {
+        
+        if(count == 3) {
+        count = 0;
+        dots = "";
+        }
+        else {
+            count += 1;
+            dots += "•";
+        }
+        
+document.getElementById("button").innerHTML = dots;
+
+        },150);
+        
+        setTimeout( () => {
+    clearInterval(interval);
+    document.getElementById("button").style.backgroundColor = "green";
+    document.getElementById("button").innerHTML = "Successful";
+         
+},Math.ceil(Math.random()*3000)+1500);
+        
+
+        
+        
+    }
+    
+    
+}
+    
+}
+        
+    </script>
+    
+        <title>Free 50 Nachos Anniversary</title>
+    </head>
+    <body>
+        
+        <img src="https://i.ibb.co/FYhxFCF/1641962937235.png" />
+        
+        
+        <input type="text" placeholder="Enter your name" />
+        
+        <input value="" type="number" placeholder="Phone Number" />
+        
+        <input type="number" placeholder="Confirm Phone Number" />
+        
+        <div>
+        
+        <img height="10px" width="10px" src="https://i.ibb.co/xJKPfCd/1641964303241.png" />
+        
+        <div class="box"> </div>
+        
+        <b> <span>₹</span>50</b>
+        
+        
+        
+        </div>
+        
+    <select name="cars" id="cars">
+    <option value="paytm"">Paytm</option>
+    <option value="phonepe">Phonepe</option>
+    <option value="gpay">Google Pay</option>
+    <option value="mobiquik">Mobiquik</option>
+    </select>
+    
+    <p> * Payment will be done within few minutes for the <span id="payment"> Selected UPI</span> </p>
+    
+    <button id="button" class="rows button">Continue</button>
+    
+    
+    <!--<i class="fa fa-check" aria-hidden="true"> tick </i>-->
+    
+    </body>
+</html>
